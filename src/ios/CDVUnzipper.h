@@ -7,7 +7,7 @@
 //
 
 #import <Cordova/CDV.h>
-#import "ZipArchive/ZipArchive.h"
+#import "ZipArchive.h"
 
 
 @interface CDVUnzipper : CDVPlugin

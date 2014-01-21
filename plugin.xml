@@ -35,7 +35,7 @@
         <header-file src="src/ios/CDVUnzipper.h" />
         <source-file src="src/ios/CDVUnzipper.m" />
         <header-file src="src/ios/ZipArchive.h" />
-        <source-file src="src/ios/ZipArchive.m" />
+        <source-file src="src/ios/ZipArchive.mm" />
         <header-file src="src/ios/minizip/crypt.h" />
         <header-file src="src/ios/minizip/ioapi.h" />
         <source-file src="src/ios/minizip/ioapi.c" />

@@ -9,10 +9,6 @@
     <keywords>phonegap,unzip</keywords>
  
  
-    <js-module src="www/ZipPlugin.js" name="ExtractZipFilePlugin">
-        <clobbers target="window.extractzip" />
-    </js-module>
- 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -20,6 +16,12 @@
                 <param name="android-package" value="org.apache.cordova.extractzip.ExtractZipFilePlugin"/>
             </feature>
         </config-file>
+
+        
+ 
+        <js-module src="www/ZipPlugin.js" name="ExtractZipFilePlugin">
+            <clobbers target="window.extractzip" />
+        </js-module>
  
         <source-file src="src/android/ExtractZipFilePlugin.java" target-dir="src/org/apache/cordova/extractzip" />     
      </platform>
@@ -27,10 +29,15 @@
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="ExtractZipFilePlugin">
+            <feature name="CDVUnzipper">
                 <param name="ios-package" value="CDVUnzipper" />
             </feature>
         </config-file>
+
+
+        <js-module src="www/ZipPlugin.js" name="CDVUnzipper">
+            <clobbers target="window.extractzip" />
+        </js-module>
         
         <header-file src="src/ios/CDVUnzipper.h" />
         <source-file src="src/ios/CDVUnzipper.m" />

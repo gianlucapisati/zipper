@@ -9,14 +9,14 @@
     <keywords>phonegap,unzip</keywords>
  
  
-    <js-module src="www/ZipPlugin.js" name="ZipPlugin">
+    <js-module src="www/ZipPlugin.js" name="ExtractZipFilePlugin">
         <clobbers target="window.extractzip" />
     </js-module>
  
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="ZipPlugin">
+            <feature name="ExtractZipFilePlugin">
                 <param name="android-package" value="org.apache.cordova.extractzip.ExtractZipFilePlugin"/>
             </feature>
         </config-file>

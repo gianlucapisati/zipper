@@ -1,4 +1,4 @@
- package org.apache.cordova.extractzipfile;  
+ package it.vidiemme.extractzip;
  import java.io.BufferedInputStream;  
  import java.io.BufferedOutputStream;  
  import java.io.File;  

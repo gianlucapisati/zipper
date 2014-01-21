@@ -21,6 +21,6 @@
             </feature>
         </config-file>
  
-        <source-file src="src/android/ExtractZipFilePlugin.java" target-dir="src/org/apache/cordova/extractzipfile" />     
+        <source-file src="src/android/ExtractZipFilePlugin.java" target-dir="src/it/vidiemme/extractzip" />     
      </platform>         
 </plugin>

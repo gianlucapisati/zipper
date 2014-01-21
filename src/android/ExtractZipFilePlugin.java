@@ -42,6 +42,10 @@ public class ExtractZipFilePlugin extends CordovaPlugin
 			dirToInsert = File.separator + dirToInsert;
 			String zipPath = dirToInsert;
             dirToInsert += (destinationFolder+File.separator);
+            
+            File destinationFile = new File(dirToInsert);
+            if(!destinationFile.exists()) destinationFile.mkdir();
+            
 			zipPath+=dirToSplit[dirToSplit.length-1];
 			FileInputStream fin = new FileInputStream(zipPath);
 			ZipInputStream zin = new ZipInputStream(fin);

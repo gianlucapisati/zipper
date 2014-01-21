@@ -22,5 +22,28 @@
         </config-file>
  
         <source-file src="src/android/ExtractZipFilePlugin.java" target-dir="src/org/apache/cordova/extractzip" />     
-     </platform>         
+     </platform>
+    
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="ExtractZipFilePlugin">
+                <param name="ios-package" value="CDVUnzipper" />
+            </feature>
+        </config-file>
+        
+        <header-file src="src/ios/CDVUnzipper.h" />
+        <source-file src="src/ios/CDVUnzipper.m" />
+        <header-file src="src/ios/ZipArchive.h" />
+        <source-file src="src/ios/ZipArchive.h" />
+        <header-file src="src/ios/minizip/crypt.h" />
+        <header-file src="src/ios/minizip/ioapi.h" />
+        <source-file src="src/ios/minizip/ioapi.c" />
+        <header-file src="src/ios/minizip/mztools.h" />
+        <source-file src="src/ios/minizip/mztools.c" />
+        <header-file src="src/ios/minizip/unzip.h" />
+        <source-file src="src/ios/minizip/unzip.c" />
+        <header-file src="src/ios/minizip/zip.h" />
+        <source-file src="src/ios/minizip/zip.c" />
+    </platform>
 </plugin>

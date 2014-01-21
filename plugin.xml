@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="it.vidiemme.extractzip"
+      version="0.1.0">
+    <name>ExtractZip</name>
+    <description>ExtractZip Plugin</description>
+    <license>MIT</license>
+    <keywords>phonegap,unzip</keywords>
+ 
+ 
+    <js-module src="www/ZipPlugin.js" name="ZipPlugin">
+        <clobbers target="window.extractzip" />
+    </js-module>
+ 
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ZipPlugin">
+                <param name="android-package" value="it.vidiemme.extractzip.ExtractZipFilePlugin"/>
+            </feature>
+        </config-file>
+ 
+        <source-file src="src/android/ExtractZipFilePlugin.java" target-dir="src/org/apache/cordova/extractzipfile" />     
+     </platform>         
+</plugin>

@@ -32,18 +32,20 @@
 
     
     
-- (void)unzipFile:(NSString*)zipFile toFolder:(NSString*)destinationFolder;
+- (void)unzipFile:(NSString*)zipFile toFolder:(NSString*)destinationFolder{
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",destinationFolder]];
+    
+    NSError *error = nil;
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
     
     ZipArchive* za = [[ZipArchive alloc] init];
     
-    if([za UnzipOpenFile:zipFile){
+    if([za UnzipOpenFile:zipFile]){
         BOOL ret = [za UnzipFileTo:dataPath overWrite:YES];
         if( NO==ret )
         {

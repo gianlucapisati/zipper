@@ -34,11 +34,6 @@
 	return self;
 }
 
--(void) dealloc
-{
-	[self CloseZipFile2];
-	[super dealloc];
-}
 
 -(BOOL) CreateZipFile2:(NSString*) zipFile
 {

@@ -17,12 +17,22 @@
                 <param name="android-package" value="org.apache.cordova.extractzip.ExtractZipFilePlugin"/>
             </feature>
         </config-file>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CreateZipFilePlugin">
+                <param name="android-package" value="org.apache.cordova.extractzip.CreateZipFilePlugin"/>
+            </feature>
+        </config-file>
  
 
         <js-module src="www/ZipPlugin.js" name="ExtractZipFilePlugin">
             <clobbers target="window.extractzip" />
         </js-module>
-        <source-file src="src/android/ExtractZipFilePlugin.java" target-dir="src/org/apache/cordova/extractzip" />     
+        <source-file src="src/android/ExtractZipFilePlugin.java" target-dir="src/org/apache/cordova/extractzip" />   
+        
+        <js-module src="www/ZipPlugin.js" name="CreateZipFilePlugin">
+            <clobbers target="window.extractzip" />
+        </js-module>
+        <source-file src="src/android/CreateZipFilePlugin.java" target-dir="src/org/apache/cordova/extractzip" />     
      </platform>
     
     <!-- ios -->

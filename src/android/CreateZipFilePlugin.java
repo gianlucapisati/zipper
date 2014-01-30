@@ -38,21 +38,21 @@ public class CreateZipFilePlugin extends CordovaPlugin
 			try{
 		    	FileOutputStream fos = new FileOutputStream(folderToZip.concat("/dump.zip"));
 		    	ZipOutputStream zos = new ZipOutputStream(fos);
-
+                
 		    	this.generateFileList(new File(folderToZip));
 		    	
 		    	for(String file : fileList){
-		    		 
+                    
 		    		ZipEntry ze= new ZipEntry(file);
 		        	zos.putNextEntry(ze);
-		 
+                    
 		        	FileInputStream in = new FileInputStream(folderToZip + File.separator + file);
-		 
+                    
 		        	int len;
 		        	while ((len = in.read(buffer)) > 0) {
 		        		zos.write(buffer, 0, len);
 		        	}
-		 
+                    
 		        	in.close();
 		    	}
 		    	
@@ -62,31 +62,31 @@ public class CreateZipFilePlugin extends CordovaPlugin
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-
-
+            
+            
 		} catch(Exception e) {
 			System.out.println(e);
-		} 
-
+		}
+        
 		callbackContext.success(folderToZip);
-	}  
-
+	}
+    
 	public void generateFileList(File node){
-
+        
 		//add file only
 		if(node.isFile()){
 			fileList.add(generateZipEntry(node.getAbsoluteFile().toString()));
 		}
-
+        
 		if(node.isDirectory()){
 			String[] subNote = node.list();
 			for(String filename : subNote){
 				generateFileList(new File(node, filename));
 			}
 		}
-
+        
 	}
-
+    
     private String generateZipEntry(String file){
     	return file.substring(SOURCE_FOLDER.length()+1, file.length());
     }

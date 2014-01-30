@@ -33,19 +33,15 @@
 
 - (void)zipFolder:(NSString*)folderToZip{
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",folderToZip]];
-    
     BOOL isDir=NO;
     NSArray *subpaths;
-    NSString *exportPath = documentsDirectory;
+    NSString *exportPath = folderToZip;
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:dataPath isDirectory:&isDir] && isDir){
-        subpaths = [fileManager subpathsAtPath:dataPath];
+    if ([fileManager fileExistsAtPath:folderToZip isDirectory:&isDir] && isDir){
+        subpaths = [fileManager subpathsAtPath:folderToZip];
     }
     
-    NSString *archivePath = [dataPath stringByAppendingString:@".zip"];
+    NSString *archivePath = [folderToZip stringByAppendingString:@".zip"];
     
     ZipArchive *archiver = [[ZipArchive alloc] init];
     [archiver CreateZipFile2:archivePath];

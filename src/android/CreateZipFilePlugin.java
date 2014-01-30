@@ -5,9 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.apache.cordova.CallbackContext;
@@ -36,10 +40,10 @@ public class CreateZipFilePlugin extends CordovaPlugin
 			byte[] buffer = new byte[1024];
 			
 			try{
-		    	FileOutputStream fos = new FileOutputStream(folderToZip.concat("/dump.zip"));
+		    	FileOutputStream fos = new FileOutputStream(folderToZip.concat(".zip"));
 		    	ZipOutputStream zos = new ZipOutputStream(fos);
                 
-		    	this.generateFileList(new File(folderToZip));
+		    	this.generateFileList(new File(folderToZip),folderToZip);
 		    	
 		    	for(String file : fileList){
                     
@@ -71,23 +75,23 @@ public class CreateZipFilePlugin extends CordovaPlugin
 		callbackContext.success(folderToZip);
 	}
     
-	public void generateFileList(File node){
+	public void generateFileList(File node,String sourceFolder){
         
 		//add file only
 		if(node.isFile()){
-			fileList.add(generateZipEntry(node.getAbsoluteFile().toString()));
+			fileList.add(generateZipEntry(node.getAbsoluteFile().toString(), sourceFolder));
 		}
         
 		if(node.isDirectory()){
 			String[] subNote = node.list();
 			for(String filename : subNote){
-				generateFileList(new File(node, filename));
+				generateFileList(new File(node, filename),sourceFolder);
 			}
 		}
         
 	}
     
-    private String generateZipEntry(String file){
-    	return file.substring(SOURCE_FOLDER.length()+1, file.length());
+    private String generateZipEntry(String file,String sourceFolder){
+    	return file.substring(sourceFolder.length()+1, file.length());
     }
 }

@@ -53,6 +53,10 @@ public class ExtractZipFilePlugin extends CordovaPlugin
 			
 			byte[] buffer = new byte[1024];
 			while ((ze = zin.getNextEntry()) != null) {
+                if(new File(dirToInsert+ ze.getName()).isDirectory()){
+                	//dirToInsert+= ze.getName();
+                	continue;
+                }
                 
 				FileOutputStream fout = new FileOutputStream(dirToInsert + ze.getName());
 				int len;
